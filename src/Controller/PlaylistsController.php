@@ -16,30 +16,27 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PlaylistsController extends AbstractController {
     
-    /**
-     * 
-     * @var PlaylistRepository
-     */
-    private $playlistRepository;
-    
-    /**
-     * 
-     * @var FormationRepository
-     */
-    private $formationRepository;
-    
-    /**
-     * 
-     * @var CategorieRepository
-     */
-    private $categorieRepository;    
-    
-    function __construct(PlaylistRepository $playlistRepository, 
-            CategorieRepository $categorieRepository,
-            FormationRepository $formationRespository) {
+    // Définition des constantes pour éviter la duplication
+    private const ROUTE_PLAYLISTS = 'playlists';
+    private const TEMPLATE_PLAYLISTS = 'pages/playlists.html.twig';
+    private const TEMPLATE_PLAYLIST = 'pages/playlist.html.twig';
+    private const KEY_PLAYLISTS = 'playlists';
+    private const KEY_CATEGORIES = 'categories';
+    private const KEY_VALEUR = 'valeur';
+    private const KEY_TABLE = 'table';
+
+    private PlaylistRepository $playlistRepository;
+    private CategorieRepository $categorieRepository;
+    private FormationRepository $formationRepository;
+
+    public function __construct(
+        PlaylistRepository $playlistRepository,
+        CategorieRepository $categorieRepository,
+        FormationRepository $formationRepository
+    ) {
         $this->playlistRepository = $playlistRepository;
         $this->categorieRepository = $categorieRepository;
-        $this->formationRepository = $formationRespository;
+        $this->formationRepository = $formationRepository;
     }
     
     /**

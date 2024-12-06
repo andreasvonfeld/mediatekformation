@@ -15,30 +15,29 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class FormationsController extends AbstractController {
 
+    // Déclaration des constantes au niveau de la classe
+    private const FORMATIONS = 'formations';
+    private const CATEGORIES = 'categories';
+
     /**
-     * 
      * @var FormationRepository
      */
     private $formationRepository;
-    
+
     /**
-     * 
      * @var CategorieRepository
      */
     private $categorieRepository;
-    
-    function __construct(FormationRepository $formationRepository, CategorieRepository $categorieRepository) {
+
+    public function __construct(FormationRepository $formationRepository, CategorieRepository $categorieRepository)
+    {
         $this->formationRepository = $formationRepository;
-        $this->categorieRepository= $categorieRepository;
+        $this->categorieRepository = $categorieRepository;
     }
     
     #[Route('/formations', name: 'formations')]
 public function index(): Response
 {
-    // Déclaration de constantes pour éviter la duplication
-    const FORMATIONS = 'formations';
-    const CATEGORIES = 'categories';
-
     $formations = $this->formationRepository->findAll();
     $categories = $this->categorieRepository->findAll();
 
