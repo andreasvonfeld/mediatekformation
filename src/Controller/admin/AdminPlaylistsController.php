@@ -45,6 +45,7 @@ class AdminPlaylistsController extends AbstractController{
     #[Route('/admin.playlists', name: 'admin.playlists')]
 public function index(): Response
 {
+        $this->denyAccessUnlessGranted('ROLE_USER');
     $playlists = $this->playlistRepository->findAll();
     $categories = $this->categorieRepository->findAll();
 
@@ -55,6 +56,7 @@ public function index(): Response
 }
 #[Route('/admin.playlists/delete/{id}', name: 'playlists.delete')]
 public function suppr(int $id): Response {
+    $this->denyAccessUnlessGranted('ROLE_USER');
     $playlist = $this->playlistRepository->find($id);
     
     // Vérifie si la playlist contient des formations
@@ -69,6 +71,7 @@ public function suppr(int $id): Response {
 }
 #[Route('/admin.playlists/new', name: 'playlists.new')]
 public function create(Request $request): Response {
+    $this->denyAccessUnlessGranted('ROLE_USER');
     $playlist = new Playlist();
     $formplaylist = $this->createForm(PlaylistType::class, $playlist);
 
@@ -86,6 +89,7 @@ public function create(Request $request): Response {
 
 #[Route('/admin.playlists/edit/{id}', name: 'playlists.edit')]
 public function edit(int $id, Request $request): Response {
+    $this->denyAccessUnlessGranted('ROLE_USER');
     $playlist = $this->playlistRepository->find($id);
     $categories = $this->categorieRepository->findAll();
     $formPlaylist = $this->createForm(PlaylistType::class, $playlist);
@@ -108,6 +112,7 @@ public function edit(int $id, Request $request): Response {
 
     #[Route('admin/admin.playlists/tri/{champ}/{ordre}', name: 'admin.playlists.sort')]
     public function sort($champ, $ordre): Response{
+        $this->denyAccessUnlessGranted('ROLE_USER');
         switch($champ){
             case "name":
                 $playlists = $this->playlistRepository->findAllOrderByName($ordre);
@@ -126,6 +131,7 @@ public function edit(int $id, Request $request): Response {
 
     #[Route('admin/admin.playlists/recherche/{champ}/{table}', name: 'admin.playlists.findallcontain')]
     public function findAllContain($champ, Request $request, $table=""): Response{
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $valeur = $request->get("recherche");
         $playlists = $this->playlistRepository->findByContainValue($champ, $valeur, $table);
         $categories = $this->categorieRepository->findAll();
@@ -139,6 +145,7 @@ public function edit(int $id, Request $request): Response {
 
     #[Route('admin/admin.playlists/playlist/{id}', name: 'admin.playlists.showone')]
     public function showOne($id): Response{
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $playlist = $this->playlistRepository->find($id);
         $playlistCategories = $this->categorieRepository->findAllForOnePlaylist($id);
         $playlistFormations = $this->formationRepository->findAllForOnePlaylist($id);

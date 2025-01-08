@@ -21,15 +21,6 @@ use App\Form\CategorieType;
  */
 class AdminCategoriesController extends AbstractController{
 
-    // Définition des constantes pour éviter la duplication
-    private const ROUTE_PLAYLISTS = 'playlists';
-    private const TEMPLATE_PLAYLISTS = 'pages/playlists.html.twig';
-    private const TEMPLATE_PLAYLIST = 'pages/playlist.html.twig';
-    private const KEY_PLAYLISTS = 'playlists';
-    private const KEY_CATEGORIES = 'categories';
-    private const KEY_VALEUR = 'valeur';
-    private const KEY_TABLE = 'table';
-
     private PlaylistRepository $playlistRepository;
     private CategorieRepository $categorieRepository;
     private FormationRepository $formationRepository;
@@ -47,6 +38,7 @@ class AdminCategoriesController extends AbstractController{
     #[Route('/admin.categories', name: 'admin.categories')]
 public function index(Request $request): Response
 {
+        $this->denyAccessUnlessGranted('ROLE_USER');
     // 1. Récupérer la liste pour affichage
     $categories = $this->categorieRepository->findAll();
 
@@ -77,6 +69,7 @@ public function index(Request $request): Response
 }
 #[Route('/admin.categories/delete/{id}', name: 'categories.delete')]
 public function suppr(int $id): Response {
+    $this->denyAccessUnlessGranted('ROLE_USER');
     $categorie = $this->categorieRepository->find($id);
     $this->categorieRepository->remove($categorie);
     return $this->redirectToRoute('admin.categories');

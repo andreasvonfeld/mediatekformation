@@ -5,6 +5,11 @@ use App\Repository\FormationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\User;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * Description of AccueilController
@@ -28,11 +33,15 @@ class AccueilController extends AbstractController{
     
     #[Route('/', name: 'accueil')]
     public function index(): Response{
+
+        
+        
+        
         $formations = $this->repository->findAllLasted(2);
         return $this->render("pages/accueil.html.twig", [
             'formations' => $formations
         ]); 
-    }
+    } 
     
     #[Route('/cgu', name: 'cgu')]
     public function cgu(): Response{

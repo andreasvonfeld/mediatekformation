@@ -47,6 +47,7 @@ class AdminFormationsController  extends AbstractController
     #[Route('/admin.formations', name: 'admin.formations')]
 public function index(): Response
 {
+    $this->denyAccessUnlessGranted('ROLE_USER');
     $formations = $this->formationRepository->findAll();
     $categories = $this->categorieRepository->findAll();
 
@@ -59,6 +60,7 @@ public function index(): Response
 
 #[Route('/admin.formations/update/{id}', name: 'formations.update', methods: ['POST'])]
 public function update($id, Request $request): Response {
+    $this->denyAccessUnlessGranted('ROLE_USER');
     $formation = $this->formationRepository->find($id);
 
     if (!$formation) {
@@ -87,6 +89,7 @@ $formation->setCategories(new ArrayCollection($categories));
 
 #[Route('/admin.formations/edit/{id}', name: 'formations.edit')]
 public function edit(int $id, Request $request): Response {
+    $this->denyAccessUnlessGranted('ROLE_USER');
     $formation = $this->formationRepository->find($id);
     $categories = $this->categorieRepository->findAll();
     $formFormation = $this->createForm(FormationType::class, $formation);
@@ -108,6 +111,7 @@ public function edit(int $id, Request $request): Response {
 
 #[Route('/admin.formations/delete/{id}', name: 'formations.delete')]
 public function suppr(int $id): Response {
+    $this->denyAccessUnlessGranted('ROLE_USER');
     $formation = $this->formationRepository->find($id);
     $this->formationRepository->remove($formation);
     return $this->redirectToRoute('admin.formations');
@@ -134,6 +138,7 @@ public function create(Request $request): Response {
 
 #[Route('admin/admin.formations/tri/{champ}/{ordre}/{table}', name: 'admin.formations.sort')]
     public function sort($champ, $ordre, $table=""): Response{
+    $this->denyAccessUnlessGranted('ROLE_USER');
         $formations = $this->formationRepository->findAllOrderBy($champ, $ordre, $table);
         $categories = $this->categorieRepository->findAll();
         return $this->render("admin/admin.formations.html.twig", [
@@ -144,6 +149,7 @@ public function create(Request $request): Response {
 
     #[Route('admin/admin.formations/recherche/{champ}/{table}', name: 'admin.formations.findallcontain')]
     public function findAllContain($champ, Request $request, $table=""): Response{
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $valeur = $request->get("recherche");
         $formations = $this->formationRepository->findByContainValue($champ, $valeur, $table);
         $categories = $this->categorieRepository->findAll();
