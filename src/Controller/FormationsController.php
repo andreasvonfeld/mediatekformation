@@ -1,5 +1,7 @@
 <?php
 namespace App\Controller;
+use App\Entity\Formation;
+
 
 use App\Repository\CategorieRepository;
 use App\Repository\FormationRepository;
@@ -79,4 +81,9 @@ public function index(): Response
         ]);        
     }   
     
+    
+
+
 }
+    
+

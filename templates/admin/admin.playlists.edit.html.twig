@@ -1,0 +1,27 @@
+{% extends "baseadmin.html.twig" %}
+
+{% block body %}
+    <h2>Détails playlist : </h2>
+    {{ include ('_admin.playlists.form.html.twig')}}
+    
+    <!-- Boucle d'affichage des formations -->
+    <h3>Formations de cette playlist</h3>
+    {% if playlist.formations|length > 0 %}
+        <ul>
+            {% for formation in playlist.formations %}
+                <li>
+                    {% if formation.miniature %}
+                            <a href="{{ path('formations.showone', {id:formation.id}) }}">
+                                <img src="{{ formation.miniature }}">
+                            </a>
+                        {% endif %}
+                        {{ formation.title }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucune formation n'est associée à cette playlist.</p>
+    {% endif %}
+            {% endblock %}
+            
+            

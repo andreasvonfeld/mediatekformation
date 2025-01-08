@@ -1,0 +1,54 @@
+{% extends "baseadmin.html.twig" %}
+
+{% block body %}
+    
+    <table class="table table-striped">
+        <thead>
+        <br><tr>{{ include ('_admin.categories.form.html.twig')}}
+        <tr>
+            <th>
+                Nom
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for categorie in categories %}
+            <tr>
+            <td>
+                {{ categorie.name }}
+            </td>
+            <td>
+                <a href="javascript:void(0)"
+               class="btn btn-primary btn-sm"
+               onclick="return confirmDeletionCategory({{ categorie.id }}, {{ categorie.formations|length }})">
+               Supprimer
+            </a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+    </table>
+<script>
+  function confirmDeletionCategory(categoryId, nbFormations) {
+    // Boîte de confirmation standard
+    if (!confirm("Êtes-vous sûr de vouloir supprimer cette catégorie ?")) {
+      return false; // Annule la suppression
+    }
+
+    // L'utilisateur a cliqué sur "Oui"
+    if (nbFormations > 0) {
+      alert("La catégorie contient au moins une formation. Suppression impossible.");
+      return false; // On annule la suppression
+    }
+
+    // Sinon, on redirige vers la route de suppression de la catégorie
+    window.location.href = "{{ path('categories.delete', {id: 'XXX'}) }}"
+      .replace("XXX", categoryId);
+
+    return false;
+  }
+</script>
+{% endblock %}

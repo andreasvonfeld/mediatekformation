@@ -6,8 +6,13 @@ use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
+#[UniqueEntity(
+    fields: ['name'],
+    message: "Une catégorie existe déjà sous ce nom."
+)]
 class Categorie
 {
     #[ORM\Id]
@@ -15,7 +20,7 @@ class Categorie
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
+    #[ORM\Column(length: 50, unique: true, nullable: false)]
     private ?string $name = null;
 
     /**
