@@ -12,9 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Formation;
 use Doctrine\Common\Collections\ArrayCollection;
 
-
-
-
 /**
  * Description of AdminFormationController
  *
@@ -43,7 +40,10 @@ class AdminFormationsController  extends AbstractController
     }
     
 
-    
+    /**
+     * Chargement de la page
+     * @return Response
+     */
     #[Route('/admin.formations', name: 'admin.formations')]
 public function index(): Response
 {
@@ -57,10 +57,19 @@ public function index(): Response
     ]);
 }
 
-
+/**
+ * Méthode update
+ * @param type $id
+ * @param Request $request
+ * @return Response
+ * @throws type
+ */
 #[Route('/admin.formations/update/{id}', name: 'formations.update', methods: ['POST'])]
 public function update($id, Request $request): Response {
+    
+    // Vérifier la connexion
     $this->denyAccessUnlessGranted('ROLE_USER');
+    
     $formation = $this->formationRepository->find($id);
 
     if (!$formation) {
@@ -87,6 +96,12 @@ $formation->setCategories(new ArrayCollection($categories));
     return $this->redirectToRoute('formations');
 }
 
+/**
+ * Méthode pour modifier la formation
+ * @param int $id
+ * @param Request $request
+ * @return Response
+ */
 #[Route('/admin.formations/edit/{id}', name: 'formations.edit')]
 public function edit(int $id, Request $request): Response {
     $this->denyAccessUnlessGranted('ROLE_USER');
@@ -107,8 +122,11 @@ public function edit(int $id, Request $request): Response {
     ]);
 }
 
-//supprimer une formation
-
+/**
+ * Méthode de suppresion d'une formation
+ * @param int $id
+ * @return Response
+ */
 #[Route('/admin.formations/delete/{id}', name: 'formations.delete')]
 public function suppr(int $id): Response {
     $this->denyAccessUnlessGranted('ROLE_USER');
@@ -117,6 +135,11 @@ public function suppr(int $id): Response {
     return $this->redirectToRoute('admin.formations');
 }
 
+/**
+ * Méthode de création d'une formation
+ * @param Request $request
+ * @return Response
+ */
 #[Route('/admin.formations/new', name: 'formations.new')]
 public function create(Request $request): Response {
     $formation = new Formation();
@@ -134,8 +157,13 @@ public function create(Request $request): Response {
     ]);
 }
 
-//tries
-
+/**
+ * Méthode de tri des formations
+ * @param type $champ
+ * @param type $ordre
+ * @param type $table
+ * @return Response
+ */
 #[Route('admin/admin.formations/tri/{champ}/{ordre}/{table}', name: 'admin.formations.sort')]
     public function sort($champ, $ordre, $table=""): Response{
     $this->denyAccessUnlessGranted('ROLE_USER');
@@ -147,6 +175,13 @@ public function create(Request $request): Response {
         ]);
     }     
 
+    /**
+     * Méthode de recherche des formations
+     * @param type $champ
+     * @param Request $request
+     * @param type $table
+     * @return Response
+     */
     #[Route('admin/admin.formations/recherche/{champ}/{table}', name: 'admin.formations.findallcontain')]
     public function findAllContain($champ, Request $request, $table=""): Response{
         $this->denyAccessUnlessGranted('ROLE_USER');

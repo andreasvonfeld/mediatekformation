@@ -37,6 +37,10 @@ class FormationsController extends AbstractController {
         $this->categorieRepository = $categorieRepository;
     }
     
+    /**
+     * Chargement de la page
+     * @return Response
+     */
     #[Route('/formations', name: 'formations')]
 public function index(): Response
 {
@@ -48,8 +52,13 @@ public function index(): Response
         self::CATEGORIES => $categories,
     ]);
 }
-
-
+    /**
+     * Méthode de tri
+     * @param type $champ
+     * @param type $ordre
+     * @param type $table
+     * @return Response
+     */
     #[Route('/formations/tri/{champ}/{ordre}/{table}', name: 'formations.sort')]
     public function sort($champ, $ordre, $table=""): Response{
         $formations = $this->formationRepository->findAllOrderBy($champ, $ordre, $table);
@@ -60,6 +69,13 @@ public function index(): Response
         ]);
     }     
 
+    /**
+     * Méthode de recherche
+     * @param type $champ
+     * @param Request $request
+     * @param type $table
+     * @return Response
+     */
     #[Route('/formations/recherche/{champ}/{table}', name: 'formations.findallcontain')]
     public function findAllContain($champ, Request $request, $table=""): Response{
         $valeur = $request->get("recherche");
@@ -73,6 +89,11 @@ public function index(): Response
         ]);
     }  
 
+    /**
+     * Méthode qui affiche les détails d'une formation
+     * @param type $id
+     * @return Response
+     */
     #[Route('/formations/formation/{id}', name: 'formations.showone')]
     public function showOne($id): Response{
         $formation = $this->formationRepository->find($id);

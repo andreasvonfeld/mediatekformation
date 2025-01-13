@@ -9,6 +9,9 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PlaylistRepository::class)]
+/**
+ * Classe de l'entité Playlist
+ */
 class Playlist
 {
     #[ORM\Id]

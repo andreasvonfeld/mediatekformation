@@ -42,6 +42,10 @@ class AdminPlaylistsController extends AbstractController{
         $this->formationRepository = $formationRepository;
     }
     
+    /**
+     * Chargement de la page
+     * @return Response
+     */
     #[Route('/admin.playlists', name: 'admin.playlists')]
 public function index(): Response
 {
@@ -54,6 +58,12 @@ public function index(): Response
             'categories' => $categories
     ]);
 }
+
+/**
+ * Méthode de suppression des playlists
+ * @param int $id
+ * @return Response
+ */
 #[Route('/admin.playlists/delete/{id}', name: 'playlists.delete')]
 public function suppr(int $id): Response {
     $this->denyAccessUnlessGranted('ROLE_USER');
@@ -69,6 +79,12 @@ public function suppr(int $id): Response {
     $this->playlistRepository->remove($playlist);
     return $this->redirectToRoute('admin.playlists');
 }
+
+/**
+ * Méthode de création des playlists
+ * @param Request $request
+ * @return Response
+ */
 #[Route('/admin.playlists/new', name: 'playlists.new')]
 public function create(Request $request): Response {
     $this->denyAccessUnlessGranted('ROLE_USER');
@@ -87,6 +103,12 @@ public function create(Request $request): Response {
     ]);
 }
 
+/**
+ * Méthode de modification des playlists
+ * @param int $id
+ * @param Request $request
+ * @return Response
+ */
 #[Route('/admin.playlists/edit/{id}', name: 'playlists.edit')]
 public function edit(int $id, Request $request): Response {
     $this->denyAccessUnlessGranted('ROLE_USER');
@@ -107,9 +129,12 @@ public function edit(int $id, Request $request): Response {
     ]);
 }
 
-//tris
-
-
+/**
+ * Méthode de tri des playlists
+ * @param type $champ
+ * @param type $ordre
+ * @return Response
+ */
     #[Route('admin/admin.playlists/tri/{champ}/{ordre}', name: 'admin.playlists.sort')]
     public function sort($champ, $ordre): Response{
         $this->denyAccessUnlessGranted('ROLE_USER');
@@ -129,6 +154,13 @@ public function edit(int $id, Request $request): Response {
         ]);
     }          
 
+    /**
+     * Méthode de recherche des playlists
+     * @param type $champ
+     * @param Request $request
+     * @param type $table
+     * @return Response
+     */
     #[Route('admin/admin.playlists/recherche/{champ}/{table}', name: 'admin.playlists.findallcontain')]
     public function findAllContain($champ, Request $request, $table=""): Response{
         $this->denyAccessUnlessGranted('ROLE_USER');
@@ -143,12 +175,27 @@ public function edit(int $id, Request $request): Response {
         ]);
     }  
 
+    /**
+     * Méthode qui affiche les détails d'une playlist spécifique 
+     * @param type $id
+     * @return Response
+     */
     #[Route('admin/admin.playlists/playlist/{id}', name: 'admin.playlists.showone')]
     public function showOne($id): Response{
+        
+        // Vérifier les permissions
         $this->denyAccessUnlessGranted('ROLE_USER');
+        
+        // Récupérer la playlist par son ID
         $playlist = $this->playlistRepository->find($id);
+        
+        // Récupérer les catégories associées à la playlist
         $playlistCategories = $this->categorieRepository->findAllForOnePlaylist($id);
+        
+        // Récupérer les formations associées à la playlist
         $playlistFormations = $this->formationRepository->findAllForOnePlaylist($id);
+        
+        // Mise en forme de la page avec les données spécifiques
         return $this->render("admin/admin.playlist.html.twig", [
             'playlist' => $playlist,
             'playlistcategories' => $playlistCategories,

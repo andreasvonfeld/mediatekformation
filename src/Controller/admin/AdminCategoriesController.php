@@ -8,10 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\FormationRepository;
-use App\Form\FormationType;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Categorie;
-use Doctrine\Common\Collections\ArrayCollection;
 use App\Form\CategorieType;
 
 /**
@@ -35,38 +33,47 @@ class AdminCategoriesController extends AbstractController{
         $this->formationRepository = $formationRepository;
     }
     
+    /**
+     * Chargement de la page
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/admin.categories', name: 'admin.categories')]
 public function index(Request $request): Response
 {
-        $this->denyAccessUnlessGranted('ROLE_USER');
-    // 1. Récupérer la liste pour affichage
+    // Vérifier la connexion
+    $this->denyAccessUnlessGranted('ROLE_USER');
+    
+    // Récupérer la liste pour affichage
     $categories = $this->categorieRepository->findAll();
 
-    // 2. Créer l'objet Categorie
+    // Créer l'objet Categorie
     $categorie = new Categorie();
 
-    // 3. Construire le formulaire CategorieType
+    // Construire le formulaire CategorieType
     $form = $this->createForm(CategorieType::class, $categorie);
 
-    // 4. Gérer la requête (soumission du formulaire)
+    // Gérer la requête (soumission du formulaire)
     $form->handleRequest($request);
     if ($form->isSubmitted() && $form->isValid()) {
-        // 5. Enregistrer la catégorie si le formulaire est valide
+        // Enregistrer la catégorie si le formulaire est valide
         $this->categorieRepository->add($categorie);
-
-        // Optionnel : message flash
-        $this->addFlash('success', 'Catégorie ajoutée avec succès.');
 
         // Redirection
         return $this->redirectToRoute('admin.categories');
     }
 
-    // 6. Rendre le template en passant la variable 'formCategorie'
+    // Rendre le template en passant la variable 'formCategorie'
     return $this->render("admin/admin.categories.html.twig", [
         'categories'    => $categories,
-        'formCategorie' => $form->createView(),  // <= IMPORTANT
+        'formCategorie' => $form->createView(),
     ]);
 }
+/**
+ * Méthode de suppression
+ * @param int $id
+ * @return Response
+ */
 #[Route('/admin.categories/delete/{id}', name: 'categories.delete')]
 public function suppr(int $id): Response {
     $this->denyAccessUnlessGranted('ROLE_USER');

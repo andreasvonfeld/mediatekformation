@@ -13,6 +13,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
     fields: ['name'],
     message: "Une catégorie existe déjà sous ce nom."
 )]
+    /**
+     * Classe de l'entité Categorie
+     */
 class Categorie
 {
     #[ORM\Id]

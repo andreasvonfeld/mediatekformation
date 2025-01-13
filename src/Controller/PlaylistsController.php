@@ -40,6 +40,7 @@ class PlaylistsController extends AbstractController {
     }
     
     /**
+     * Chargement de la page
      * @Route("/playlists", name="playlists")
      * @return Response
      */
@@ -55,6 +56,12 @@ class PlaylistsController extends AbstractController {
         ]);
     }
 
+    /**
+     * Méthode de tri
+     * @param type $champ
+     * @param type $ordre
+     * @return Response
+     */
     #[Route('/playlists/tri/{champ}/{ordre}', name: 'playlists.sort')]
     public function sort($champ, $ordre): Response{
         switch($champ){
@@ -73,6 +80,13 @@ class PlaylistsController extends AbstractController {
         ]);
     }          
 
+    /**
+     * Méthode de recherche
+     * @param type $champ
+     * @param Request $request
+     * @param type $table
+     * @return Response
+     */
     #[Route('/playlists/recherche/{champ}/{table}', name: 'playlists.findallcontain')]
     public function findAllContain($champ, Request $request, $table=""): Response{
         $valeur = $request->get("recherche");
@@ -86,6 +100,11 @@ class PlaylistsController extends AbstractController {
         ]);
     }  
 
+    /**
+     * Méthode qui affiche les détails d'une playlist
+     * @param type $id
+     * @return Response
+     */
     #[Route('/playlists/playlist/{id}', name: 'playlists.showone')]
     public function showOne($id): Response{
         $playlist = $this->playlistRepository->find($id);
