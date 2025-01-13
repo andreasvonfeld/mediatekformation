@@ -61,6 +61,11 @@ class Formation
 
     public function setPublishedAt(?\DateTimeInterface $publishedAt): static
     {
+        $today = new \DateTime();
+        if ($publishedAt > $today) {
+        throw new \InvalidArgumentException("La date ne peut pas être postérieure à aujourd'hui.");
+        }
+
         $this->publishedAt = $publishedAt;
 
         return $this;
