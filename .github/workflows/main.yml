@@ -3,7 +3,7 @@ name: Deploy website on push
 on:
   push:
     branches:
-      - main  # Assure-toi que "main" est bien ta branche principale
+      - master
 
 jobs:
   web-deploy:
