@@ -18,5 +18,5 @@ jobs:
         with:
           server: ftp.mediatekformation.worldlite.fr
           server-dir: /public_html/mediatekformation/
-          username: ${{ secrets.FTP_USERNAME }}
+          username: andreas.vonfeld
           password: ${{ secrets.FTP_PASSWORD }}
