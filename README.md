@@ -66,10 +66,9 @@ La partie centrale est séparée en 2 parties :<br>
 ![image](https://github.com/user-attachments/assets/80b7d2d9-b326-4a0d-addd-ed5da8b40701)
 
 ## Partie Back Office
-![schema auth](https://github.com/user-attachments/assets/9e42428a-6a1f-42a0-b4a4-4c8e6ba58d40)
-
 
 ### Page 6 : L'authentification
+![schema auth](https://github.com/user-attachments/assets/9e42428a-6a1f-42a0-b4a4-4c8e6ba58d40)
 Cette page permet d'accéder à la partie admin.<br>
 Voici les informations pour se connecter :<br>
 •	identifiant : LudovicBlanc<br>
