@@ -2,8 +2,14 @@
 Readme d'origine : https://github.com/CNED-SLAM/mediatekformation
 ## Présentation
 Ce site, développé avec Symfony 6.4, permet d'accéder aux vidéos d'auto-formation proposées par une chaîne de médiathèques et qui sont aussi accessibles sur YouTube.<br> 
-Actuellement, voici ce que peut faire l'utilisateur dans la partie front office :<br>
+Voici ce que peut faire l'utilisateur dans la partie front office :<br>
 ![img1](https://github.com/user-attachments/assets/9c5c503b-738d-40cf-ba53-36ba4c0209e8)
+
+Voici ce que peut faire l'utilisateur dans la partie back office :<br>
+![schema categories](https://github.com/user-attachments/assets/4fa007d5-c6ce-4d1f-891a-cbfa38527159)
+![schema formations](https://github.com/user-attachments/assets/9ec470d2-e855-41f5-938e-68441cb556ef)
+![schema playlists](https://github.com/user-attachments/assets/c1808f0e-2631-409c-bbeb-4eea8cf92f06)
+
 ## Partie Front Office
 
 ### Page 1 : l'accueil
@@ -60,6 +66,8 @@ La partie centrale est séparée en 2 parties :<br>
 ![image](https://github.com/user-attachments/assets/80b7d2d9-b326-4a0d-addd-ed5da8b40701)
 
 ## Partie Back Office
+![schema auth](https://github.com/user-attachments/assets/9e42428a-6a1f-42a0-b4a4-4c8e6ba58d40)
+
 
 ### Page 6 : L'authentification
 Cette page permet d'accéder à la partie admin.<br>
