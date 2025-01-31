@@ -134,15 +134,17 @@ A la fin du formulaire, si toutes les informations sont bien remplies, l'adminis
 
 ### Page 10 : Les playlists (partie admin)
 Cette page présente les playlists.<br>
-La partie haute est identique à la page d'accueil (bannière et menu).<br>
-La partie centrale contient un tableau composé de 3 colonnes :<br>
+La partie centrale contient un tableau composé de 4 colonnes :<br>
 •	La 1ère colonne ("playlist") contient le nom de chaque playlist.<br>
 •	La 2ème colonne ("catégories") contient la ou les catégories concernées par chaque playlist (langage…).<br>
 •	La 3ème contient un bouton pour accéder à la page de présentation de la playlist.<br>
+•	La 4ème contient deux boutons, un pour modifier et l'autre pour supprimer une playlist.<br>
 Au niveau de la colonne "playlist", 2 boutons permettent de trier les lignes en ordre croissant ("<") ou décroissant (">"). Il est aussi possible de filtrer les lignes en tapant un texte : seuls les lignes qui contiennent ce texte sont affichées. Si la zone est vide, le fait de cliquer sur "filtrer" permet de retrouver la liste complète.<br> 
 Au niveau de la catégorie, la sélection d'une catégorie dans le combo permet d'afficher uniquement les playlists qui ont cette catégorie. Le fait de sélectionner la ligne vide du combo permet d'afficher à nouveau toutes les playlists.<br>
 Par défaut la liste est triée sur le nom de la playlist.<br>
 Cliquer sur le bouton "voir détail" d'une playlist permet d'accéder à la page 5 qui présente le détail de la playlist concernée.<br>
+Le fait de cliquer sur le bouton de modification d'une playlist permet d'accéder au formulaire de modification d'une playlist.<br>
+Le fait de cliquer sur le bouton de suppression d'une playlist affichera une fenêtre de validation de suppression.<br>
 
 ![image](https://github.com/user-attachments/assets/049fdd02-d380-42ec-a21c-d6037b9d6db2)
 
