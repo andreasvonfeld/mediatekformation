@@ -59,6 +59,8 @@ La partie centrale est séparée en 2 parties :<br>
 •	La partie droite contient la liste des formations contenues dans la playlist (miniature et titre) avec possibilité de cliquer sur une formation pour aller dans la page de la formation.<br>
 ![image](https://github.com/user-attachments/assets/80b7d2d9-b326-4a0d-addd-ed5da8b40701)
 
+## Partie Back Office
+
 ### Page 6 : L'authentification
 Cette page permet d'accéder à la partie admin.<br>
 Voici les informations pour se connecter :<br>
@@ -87,8 +89,6 @@ Le fait de cliquer sur le bouton de modification d'une formation permet d'accéd
 Le fait de cliquer sur le bouton de suppression d'une formation affichera une fenêtre de validation de suppression.<br>
 
 ![image](https://github.com/user-attachments/assets/346a5805-4798-4601-aff1-cf99536f566c)
-
-## Partie Back Office
 
 ### Page 8 : Ajout d'une formation (partie admin)
 Cette page permet la création d'une formation via un formulaire de 6 champs.<br>
