@@ -69,7 +69,7 @@ Voici les informations pour se connecter :<br>
 
 ### Page 7 : Les formations (partie admin)
 Cette page permet la gestion des formations.<br>
-Chaque pages de la partie administrateur contient une partie cliquable permettant la déconnexion de l'utilisateur.
+Chaque page de la partie administrateur contient une partie cliquable permettant la déconnexion de l'utilisateur.
 La partie haute contient désormais un bouton permettant l'ajout de formations.<br>
 La partie centrale contient un tableau composé de 6 colonnes :<br>
 •	La 1ère colonne ("formation") contient le titre de chaque formation.<br>
