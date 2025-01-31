@@ -86,23 +86,38 @@ Voici les informations pour se connecter :<br>
 •	identifiant : LudovicBlanc<br>
 •	mot de passe : 0000<br>
 ![image](https://github.com/user-attachments/assets/69622c86-10c3-490f-8e30-b71833f89f86)
-Cette page permet la gestion des formations.<br>
 
 ### Page 7 : Les formations (partie admin)
-La partie haute est identique à la page d'accueil (bannière et menu).
-La partie centrale contient un tableau composé de 5 colonnes :
-• La 1ère colonne ("formation") contient le titre de chaque formation.
-• La 2ème colonne ("playlist") contient le nom de la playlist dans laquelle chaque formation se trouve.
-• La 3ème colonne ("catégories") contient la ou les catégories concernées par chaque formation (langage…).
-• La 4ème colonne ("date") contient la date de parution de chaque formation.
-• La 5ème colonne contient la capture visible sur YouTube, pour chaque formation.
-Au niveau des colonnes "formation", "playlist" et "date", 2 boutons permettent de trier les lignes en ordre croissant ("<") ou décroissant (">").
-Au niveau des colonnes "formation" et "playlist", il est possible de filtrer les lignes en tapant un texte : seuls les lignes qui contiennent ce texte sont affichées. Si la zone est vide, le fait de cliquer sur "filtrer" permet de retrouver la liste complète.
-Au niveau de la catégorie, la sélection d'une catégorie dans le combo permet d'afficher uniquement les formations qui ont cette catégorie. Le fait de sélectionner la ligne vide du combo permet d'afficher à nouveau toutes les formations.
-Par défaut, la liste est triée sur la date par ordre décroissant (la formation la plus récente en premier).
+Cette page permet la gestion des formations.<br>
+La partie haute contient désormais un bouton permettant l'ajout de formations.<br>
+La partie centrale contient un tableau composé de 6 colonnes :<br>
+•	La 1ère colonne ("formation") contient le titre de chaque formation.<br>
+•	La 2ème colonne ("playlist") contient le nom de la playlist dans laquelle chaque formation se trouve.<br>
+•	La 3ème colonne ("catégories") contient la ou les catégories concernées par chaque formation (langage…).<br>
+•	La 4ème colonne ("date") contient la date de parution de chaque formation.<br>
+•	LA 5ème contient la capture visible sur YouTube, pour chaque formation.<br>
+•	LA 6ème contient deux boutons : un pour modifier et l'autre pour supprimer une formation.<br>
+Au niveau des colonnes "formation", "playlist" et "date", 2 boutons permettent de trier les lignes en ordre croissant ("<") ou décroissant (">").<br>
+Au niveau des colonnes "formation" et "playlist", il est possible de filtrer les lignes en tapant un texte : seuls les lignes qui contiennent ce texte sont affichées. Si la zone est vide, le fait de cliquer sur "filtrer" permet de retrouver la liste complète.<br> 
+Au niveau de la catégorie, la sélection d'une catégorie dans le combo permet d'afficher uniquement les formations qui ont cette catégorie. Le fait de sélectionner la ligne vide du combo permet d'afficher à nouveau toutes les formations.<br>
+Par défaut la liste est triée sur la date par ordre décroissant (la formation la plus récente en premier).<br>
+Le fait de cliquer sur une miniature permet d'accéder à la troisième page contenant le détail de la formation.<br>
+Le fait de cliquer sur le bouton d'ajout d'une formation permet d'accéder au formulaire d'ajout d'une formation.<br>
 
-Le fait de cliquer sur une miniature permet d'accéder à la troisième page contenant le détail de la formation.
 ![image](https://github.com/user-attachments/assets/346a5805-4798-4601-aff1-cf99536f566c)
+
+### Page 8 : Ajout d'une formation (partie admin)
+Cette page permet la création d'une formations via un formulaire de 6 champs.<br>
+•	Le 1er champs ("Date") contient la date de création de la formation et elle ne peut être postérieure à aujourd'hui.<br>
+•	Le 2ème champs ("Title") contient le titre de la formation.<br>
+•	Le 3ème champs ("Description") contient la description complète de la formation.<br>
+•	Le 4ème champs ("Video_ID") contient l'ID Youtube de la vidéo permettant d'y accéder (on le trouve dans l'URL après le "v=").<br>
+•	Le 5ème champs ("Playlist") contient toutes les playlists du site.<br>
+•	Le 6ème champs ("Categories") contient toutes les catégories du site.<br>
+A la fin du formulaire, si toutes les informations sont bien remplies, l'administrateur peut appuyer sur "Submit" pour créer la formation.<br>
+
+![image](https://github.com/user-attachments/assets/894a1294-1777-4010-bddb-6ab9fa3c849b)
+
 
 
 Remarques : 
