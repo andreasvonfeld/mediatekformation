@@ -60,26 +60,6 @@ La partie centrale est séparée en 2 parties :<br>
 •	La partie droite contient la liste des formations contenues dans la playlist (miniature et titre) avec possibilité de cliquer sur une formation pour aller dans la page de la formation.<br>
 ![image](https://github.com/user-attachments/assets/80b7d2d9-b326-4a0d-addd-ed5da8b40701)
 
-## La base de données
-La base de données exploitée par le site est au format MySQL.
-### Schéma conceptuel de données
-Voici le schéma correspondant à la BDD.<br>
-![img7](https://github.com/user-attachments/assets/f3eca694-bf96-4f6f-811e-9d11a7925e9e)
-<br>video_id contient le code YouTube de la vidéo, qui permet ensuite de lancer la vidéo à l'adresse suivante :<br>
-https://www.youtube.com/embed/<<<video_id>>>
-### Relations issues du schéma
-<code><strong>formation (id, published_at, title, video_id, description, playlist_id)</strong>
-id : clé primaire
-playlist_id : clé étrangère en ref. à id de playlist
-<strong>playlist (id, name, description)</strong>
-id : clé primaire
-<strong>categorie (id, name)</strong>
-id : clé primaire
-<strong>formation_categorie (id_formation, id_categorie)</strong>
-id_formation, id_categorie : clé primaire
-id_formation : clé étrangère en ref. à id de formation
-id_categorie : clé étrangère en ref. à id de categorie</code>
-
 ### Page 6 : L'authentification
 Cette page permet d'accéder à la partie admin.<br>
 Voici les informations pour se connecter :<br>
@@ -89,6 +69,7 @@ Voici les informations pour se connecter :<br>
 
 ### Page 7 : Les formations (partie admin)
 Cette page permet la gestion des formations.<br>
+Chaque pages de la partie administrateur contient une partie cliquable permettant la déconnexion de l'utilisateur.
 La partie haute contient désormais un bouton permettant l'ajout de formations.<br>
 La partie centrale contient un tableau composé de 6 colonnes :<br>
 •	La 1ère colonne ("formation") contient le titre de chaque formation.<br>
@@ -148,18 +129,50 @@ Le fait de cliquer sur le bouton de suppression d'une playlist affichera une fen
 
 ![image](https://github.com/user-attachments/assets/049fdd02-d380-42ec-a21c-d6037b9d6db2)
 
+### Page 11 : Modification d'une playlist (partie admin)
+Cette page est identique à la page d'ajout sauf que les informations concernant la playlist en cours de modification sont déjà préremplies.<br>
+•	Le 1er champs ("Title") contient le titre de la playlist.<br>
+•	Le 2ème champs ("Description") contient la description complète de la formation.<br>
+A la fin du formulaire, si toutes les informations sont bien remplies, l'administrateur peut appuyer sur "Submit" pour créer la playlist.<br>
 
+![image](https://github.com/user-attachments/assets/12d37fab-c768-4844-a1c9-4bdc776e1f46)
 
+### Page 12 : Les catégories (partie admin)
+Cette page présente les catégories.<br>
+La partie haute de la page contient un petit formulaire pour créer une catégorie.
+La partie centrale contient un tableau composé de 2 colonnes :<br>
+•	La 1ère colonne ("nom") contient le nom de chaque catégorie.<br>
+•	La 2ème colonne ("actions") contient le bouton d'action de suppression.<br>
 
+![image](https://github.com/user-attachments/assets/6d937864-84a1-4a18-b8cd-f328c707664b)
+
+## La base de données
+La base de données exploitée par le site est au format MySQL.
+### Schéma conceptuel de données
+Voici le schéma correspondant à la BDD.<br>
+![img7](https://github.com/user-attachments/assets/f3eca694-bf96-4f6f-811e-9d11a7925e9e)
+<br>video_id contient le code YouTube de la vidéo, qui permet ensuite de lancer la vidéo à l'adresse suivante :<br>
+https://www.youtube.com/embed/<<<video_id>>>
+### Relations issues du schéma
+<code><strong>formation (id, published_at, title, video_id, description, playlist_id)</strong>
+id : clé primaire
+playlist_id : clé étrangère en ref. à id de playlist
+<strong>playlist (id, name, description)</strong>
+id : clé primaire
+<strong>categorie (id, name)</strong>
+id : clé primaire
+<strong>formation_categorie (id_formation, id_categorie)</strong>
+id_formation, id_categorie : clé primaire
+id_formation : clé étrangère en ref. à id de formation
+id_categorie : clé étrangère en ref. à id de categorie</code>
 
 Remarques : 
 Les clés primaires des entités sont en auto-incrémentation.<br>
 Le chemin des images (des 2 tailles) n'est pas mémorisé dans la BDD car il peut être fabriqué de la façon suivante :<br>
 "https://i.ytimg.com/vi/" suivi de, soit "/default.jpg" (pour la miniature), soit "/hqdefault.jpg" (pour l'image plus grande de la page d'accueil).
+
 ## Test de l'application en local
-- Vérifier que Composer, Git et Wamserver (ou équivalent) sont installés sur l'ordinateur.
-- Télécharger le code et le dézipper dans www de Wampserver (ou dossier équivalent) puis renommer le dossier en "mediatekformation".<br>
-- Ouvrir une fenêtre de commandes en mode admin, se positionner dans le dossier du projet et taper "composer install" pour reconstituer le dossier vendor.<br>
-- Dans phpMyAdmin, se connecter à MySQL en root sans mot de passe et créer la BDD 'mediatekformation'.<br>
-- Récupérer le fichier mediatekformation.sql en racine du projet et l'utiliser pour remplir la BDD (si vous voulez mettre un login/pwd d'accès, il faut créer un utilisateur, lui donner les droits sur la BDD et il faut le préciser dans le fichier ".env" en racine du projet).<br>
-- De préférence, ouvrir l'application dans un IDE professionnel. L'adresse pour la lancer est : http://localhost/mediatekformation/public/index.php<br>
+- Vérifier que Composer et Git (ou équivalent) sont installés sur l'ordinateur.
+- Cloner le code dans un IDE via GitHub.<br>
+- Une fois les modifications effectuées un commit et push devrait mettre à jour le site.
+- De préférence, ouvrir l'application dans un IDE professionnel. L'adresse pour la lancer est : [http://localhost/mediatekformation/public/index.php](https://mediatekformation.worldlite.fr/mediatekformation/public/index.php)<br>
