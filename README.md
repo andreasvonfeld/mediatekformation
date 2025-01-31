@@ -183,4 +183,4 @@ Le chemin des images (des 2 tailles) n'est pas mémorisé dans la BDD car il peu
 - Vérifier que Composer et Git (ou équivalent) sont installés sur l'ordinateur.
 - Cloner le code dans un IDE via GitHub.<br>
 - Une fois les modifications effectuées un commit et push devrait mettre à jour le site.
-- De préférence, ouvrir l'application dans un IDE professionnel. L'adresse pour la lancer est : [http://localhost/mediatekformation/public/index.php](https://mediatekformation.worldlite.fr/mediatekformation/public/index.php)<br>
+- De préférence, ouvrir l'application dans un IDE professionnel. L'adresse pour la lancer est : https://mediatekformation.worldlite.fr/mediatekformation/public/index.php<br>
