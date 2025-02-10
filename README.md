@@ -180,6 +180,7 @@ Le chemin des images (des 2 tailles) n'est pas mémorisé dans la BDD car il peu
 "https://i.ytimg.com/vi/" suivi de, soit "/default.jpg" (pour la miniature), soit "/hqdefault.jpg" (pour l'image plus grande de la page d'accueil).
 
 ## Test de l'application en local
+- Récupérer le .env original puis à la fin le réexporter sur le site (sinon ça ne marchera pas.)
 - Vérifier que Composer et Git (ou équivalent) sont installés sur l'ordinateur.
 - Cloner le code dans un IDE via GitHub.<br>
 - Une fois les modifications effectuées un commit et push devrait mettre à jour le site.
