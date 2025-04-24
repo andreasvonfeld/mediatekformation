@@ -64,9 +64,7 @@
                         </h5>
                     </td>
                     <td class="text-left">
-                        <a href="{{ path('playlists.showone', { id: formation.playlist.id }) }}">
-        {{ formation.playlist.name }}
-    </a>                
+                        {{ formation.playlist.name }}                  
                     </td>                    
                     <td class="text-left">
                         {% for categorie in formation.categories %}
