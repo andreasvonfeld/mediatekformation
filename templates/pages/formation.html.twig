@@ -20,7 +20,10 @@
         <div class="col">
             {{ formation.publishedatstring }}
             <h4 class="text-info mt-5">{{ formation.title }}</h4>
-            <strong>playlist : </strong>{{ formation.playlist.name }}<br />
+            <strong>playlist : </strong>
+            <a href="{{ path('playlists.showone', { id: formation.playlist.id }) }}">
+            {{ formation.playlist.name }}
+            </a><br />
             <strong>catégories : </strong>
                 {% for categorie in formation.categories %}
                     {{ categorie.name }}&nbsp;
