@@ -117,18 +117,6 @@ class FormationRepository extends ServiceEntityRepository
                 ->getQuery()
                 ->getResult();        
     }
-    
-    public function findBetweenDates(string $start, string $end): array
-{
-    return $this->createQueryBuilder('f')
-        ->where('f.publishedAt BETWEEN :start AND :end')
-        ->setParameter('start', new \DateTime($start))
-        ->setParameter('end', new \DateTime($end))
-        ->orderBy('f.publishedAt', 'ASC')
-        ->getQuery()
-        ->getResult();
-}
-
    
     
 }

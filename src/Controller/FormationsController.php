@@ -100,25 +100,7 @@ public function index(): Response
         return $this->render("pages/formation.html.twig", [
             'formation' => $formation
         ]);        
-    }
-    
-    #[Route('/formations/dates', name: 'formations.betweenDates')]
-public function betweenDates(Request $request): Response
-{
-    $start = $request->query->get('start');
-    $end = $request->query->get('end');
-
-    $formations = [];
-
-    if ($start && $end) {
-        $formations = $this->formationRepository->findBetweenDates($start, $end);
-    }
-
-    return $this->render('pages/formations.html.twig', [
-        'formations' => $formations
-    ]);
-}
-
+    }   
     
     
 
